@@ -1,0 +1,33 @@
+{% extends "base_main.html" %}
+
+{% load static%}
+
+{% block ext_css %}
+    {{ block.super }}
+     <link rel="stylesheet" href="{% static 'css/main/home.css'%}">
+{% endblock %}
+
+
+{% block ext_js %}
+    {{block.super}}
+    <script type="text/javascript" src="{% static 'js/swiper.jquery.js' %}"></script>
+    <script src="{% static 'js/main/home.js' %}"></script>
+{% endblock %}
+
+{% block main %}
+    <div id='home'>
+        <div class="swiper-container" id='topswiper'>
+            <div class="swiper-wrapper">
+                {% for main_wheel in main_wheels %}
+                    <div class="swiper-slide"><img src="{{main_wheel.img}}" alt="{{main_wheel.name}}"></div>
+                {% endfor %}
+            </div>
+
+            <div class="swiper-pagination"></div>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+

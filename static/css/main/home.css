@@ -1,0 +1,43 @@
+footer .home span{
+    background: url(/static/image/home_selected.png) no-repeat;
+    background-size: 0.513889rem;
+  }
+  footer .home dd{
+    color: orange;
+  }
+
+/*底部图标和文字样式*/
+footer .home span {
+  background: url(/static/image/home_selected.png) no-repeat;
+  background-size: 0.513889rem;
+}
+
+footer .home dd {
+  color: orange;
+}
+
+#home {
+  padding: 1.5rem 0;
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+  padding-bottom: 3rem;
+  position: fixed;
+}
+
+#topSwiper {
+  height: 3.95rem;
+  width: 10rem;
+  overflow: hidden;
+}
+
+#topSwiper div a {
+  display: inline-block;
+  height: 3.95rem;
+  width: 10rem;
+}
+
+#topSwiper img {
+  height: 100%;
+  width: 100%;
+}
