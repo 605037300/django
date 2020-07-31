@@ -19,7 +19,7 @@ html,body{
     display: flex;
   }
   header{
-    background: yellow;
+    background: black;
     top: 0;
     left: 0;
   }

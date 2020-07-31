@@ -1,1 +1,104 @@
 {% extends 'base_main.html' %}
+
+{% load static %}
+
+{% block ext_css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static '/css/market/market.css' %}">
+{% endblock %}
+
+{% block ext_js %}
+<script src="{% static '/js/market/market.js' %}"></script>
+{% endblock%}
+
+{% block main %}
+<div id="market">
+    {#左边的导航#}
+    <aside>
+        <ul>
+            {% for foodtype in foodstyle %}
+            <li>
+                <a href="{% url 'app01:marketwithp' typeid=foodtype.typeid %}">{{ foodtype.typename }}</a>
+                {% ifequal foodtype.typeid typeid %}
+                <span class="yellowSlide"></span>
+                {% endifequal %}
+            </li>
+
+            {% endfor %}
+
+        </ul>
+    </aside>
+
+    <section>
+        <nav>
+            <ul>
+                <li id='all_types'>
+                    <div></div>
+                    <span>全部分类<span class="glyphicon glyphicon-chevron-down"></span></span>
+                </li>
+                <li id="sort_rule">
+                    <div></div>
+                    <span>综合排序<span class="glyphicon glyphicon-chevron-down"></span></span>
+                </li>
+            </ul>
+        </nav>
+        <menu>
+            <ul>
+                {% for good in goods %}
+                <li>
+                    <a href="#">
+                        <img src="{{ good.productimg }}" alt="{{ good.productlongname }}">
+                        <div class="shoppingInfo">
+                            <h6>{{ good.productlongname }}</h6>
+                            <p class="detailTag"><span>精选</span><span></span></p>
+                            <p class="unit">{{ good.isc }}</p>
+                            <p class="price"><span>{{ good.price }}</span><s>{{ good.marketprice }}</s></p>
+                        </div>
+                    </a>
+
+                    <section>
+                        <button>-</button>
+                        <span>0</span>
+                        <button>+</button>
+                    </section>
+                </li>
+                {% endfor %}
+            </ul>
+
+            <div id="all_cer">
+                <div>
+                    {% for f_l in f_list_list %}
+                        {% if childcid == f_l.1 %}
+
+                        <a href="{% url 'app01:marketwithp' typeid=typeid childcid=f_l.1 order_rule=0 %}">
+                            <button class="btn btn-success">{{ f_l.0 }}</button>
+                        </a>
+                        {% else %}
+                        <a href="{% url 'app01:marketwithp' typeid=typeid childcid=f_l.1 order_rule=0 %}">
+                            <button class="btn btn-default">{{ f_l.0 }}</button>
+                        </a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div id="sort_cer">
+                <div>
+                    {% for rule in order_rule_list %}
+                    {% ifequal order_rule_view rule.1 %}
+                    <a href="{% url 'app01:marketwithp' typeid=typeid childcid=childcid order_rule=rule.1 %}">
+                        <button class="btn btn-success">{{ rule.0 }}</button>
+                    </a>
+                    {% else %}
+                    <a href="{% url 'app01:marketwithp' typeid=typeid childcid=childcid order_rule=rule.1 %}">
+                        <button class="btn btn-default">{{ rule.0 }}</button>
+                    </a>
+                    {% endifequal %}
+                    {% endfor %}
+
+                </div>
+            </div>
+        </menu>
+    </section>
+
+</div>
+{% endblock %}

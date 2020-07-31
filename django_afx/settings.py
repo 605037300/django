@@ -25,7 +25,7 @@ SECRET_KEY = '3ftx4*ph9*wlp90oc$3ssqyr8=k1^hm2@h@7ekg!8yu2cp^3r9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["192.168.0.190",'localhost','127.0.0.1']
 
 
 # Application definition
@@ -37,10 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app01'
+    'app01',
+    'debug_toolbar',
+    'app02'
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -129,3 +132,6 @@ STATICFILES_DIRS=[
     os.path.join(BASE_DIR,'static'),
 ]
 MEDIA_ROOT=os.path.join(BASE_DIR,'static/upload')
+
+
+INTERNAL_IPS=('127.0.0.1','localhost')
