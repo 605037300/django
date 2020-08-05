@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>问题是：{{question2.q_text}}</p>
+    
+    <hr>
+    {% if err_message %}
+        {{err_message}}
+    {% else %}
+       <form action="{% url 'app04:vote' question2.id%}" method="POST">
+           {% csrf_token %}
+            <ul>
+                {% for choice in question2.choice2_set.all %}
+                <li>
+                    <input type="radio" name="choice" id='choice{{forloop.index}}' value='{{choice.id}}'>
+                    <label for="choice{{forloop.index}}">{{choice.c_text}}</label>
+                </li>
+                {% endfor %}
+            </ul>
+            <input type="submit" value="提交">
+       </form>
+    {% endif %}
+    
+</body>
+</html>

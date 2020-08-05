@@ -20,6 +20,11 @@ from django_afx import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('app01/',include(('app01.urls','app01'))),
+    path('app02/',include(('app02.urls','app02'))),
+    path('app03/',include(('app03.urls','app03'))),
+    path('app04/',include(('app04.urls','app04'))),
+    path("app05/",include(('app05.urls',"app05"))),
+    path('captcha/',include("captcha.urls"))
 ]
 
 

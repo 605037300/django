@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册页</title>
+</head>
+<body>
+    {% if registerform.captcha.errors %}
+        {{registerform.captcha.errors}}
+    {% elif msg %}
+        {{msg}}
+    {% endif %}
+    <form action="/app05/register/" method="POST">
+        {% csrf_token %}
+        <p>
+            {{registerform.name.label}}
+            {{registerform.name}}
+        </p>
+        <p>
+            {{registerform.password1.label}}
+            {{registerform.password1}}
+        </p>
+        <p>
+            {{registerform.password2.label}}
+            {{registerform.password2}}
+        </p>
+        <p>
+            {{registerform.sex.label}}
+            {{registerform.sex}}
+
+        </p>
+        <p>
+            {{registerform.email.label}}
+            {{registerform.email}}
+        </p>
+        <p>
+            {{registerform.captcha.label}}
+            {{registerform.captcha}}
+        </p>
+        <input type="submit" value="提交">
+    </form>
+
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script>
+         $("img.captcha").click(function () {
+            that=this
+            $.getJSON("/captcha/refresh/", function (json) {
+                $("img.captcha").attr("src",json.image_url);
+                $("#id_captcha_0").val(json.key);
+                return;
+            })
+        })
+
+    </script>
+</body>
+</html>

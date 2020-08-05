@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '3ftx4*ph9*wlp90oc$3ssqyr8=k1^hm2@h@7ekg!8yu2cp^3r9'
+SECRET_KEY = ''
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -86,11 +86,11 @@ WSGI_APPLICATION = 'django_afx.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'tt',
-        'USER':'123bjc123',
-        'PASSWORD':'123bjc123',
-        'HOST':'localhost',
-        'PORT':'3306'
+        'NAME': '',
+        'USER':'',
+        'PASSWORD':'',
+        'HOST':'',
+        'PORT':''
     }
 }
 
@@ -145,6 +145,6 @@ INTERNAL_IPS=('127.0.0.1','localhost')
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.qq.com'
 EMAIL_PORT = 25
-EMAIL_HOST_USER = 'byjdh@qq.com'
-EMAIL_HOST_PASSWORD = 'gxgmmpcjfcjrbdgh'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 CONFIRM_DAYS=7

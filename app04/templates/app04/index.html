@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if latest_q %}
+        <ul>
+            {% for q in latest_q %}
+                <li><a href="{% url 'app04:detail' q.pk %}">{{q.q_text}}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+    <h3>空</h3>
+    {% endif %}
+</body>
+</html>
